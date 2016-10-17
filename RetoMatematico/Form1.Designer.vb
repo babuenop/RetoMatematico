@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.T_Sol1 = New System.Windows.Forms.TextBox()
         Me.T_Sol2 = New System.Windows.Forms.TextBox()
@@ -32,10 +32,10 @@ Partial Class Form1
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Resultado1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_Indice = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.R_Parcial = New System.Windows.Forms.TextBox()
         Me.btn_ope4 = New System.Windows.Forms.Button()
         Me.btn_ope3 = New System.Windows.Forms.Button()
         Me.btn_ope2 = New System.Windows.Forms.Button()
@@ -158,11 +158,12 @@ Partial Class Form1
         '
         'GroupBox2
         '
+        Me.GroupBox2.BackColor = System.Drawing.Color.SeaGreen
         Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
+        Me.GroupBox2.Controls.Add(Me.Resultado1)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.txt_Indice)
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.R_Parcial)
         Me.GroupBox2.Controls.Add(Me.btn_ope4)
         Me.GroupBox2.Controls.Add(Me.btn_ope3)
         Me.GroupBox2.Controls.Add(Me.btn_ope2)
@@ -199,16 +200,16 @@ Partial Class Form1
         Me.Label2.Text = "Resultado "
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'TextBox2
+        'Resultado1
         '
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.ForeColor = System.Drawing.Color.Green
-        Me.TextBox2.Location = New System.Drawing.Point(200, 148)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox2.TabIndex = 27
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Resultado1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.Resultado1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Resultado1.ForeColor = System.Drawing.Color.Green
+        Me.Resultado1.Location = New System.Drawing.Point(200, 148)
+        Me.Resultado1.Name = "Resultado1"
+        Me.Resultado1.Size = New System.Drawing.Size(117, 20)
+        Me.Resultado1.TabIndex = 27
+        Me.Resultado1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
         '
@@ -234,16 +235,16 @@ Partial Class Form1
         Me.txt_Indice.TabIndex = 23
         Me.txt_Indice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox1
+        'R_Parcial
         '
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.Color.Green
-        Me.TextBox1.Location = New System.Drawing.Point(36, 148)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(117, 20)
-        Me.TextBox1.TabIndex = 24
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.R_Parcial.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.R_Parcial.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.R_Parcial.ForeColor = System.Drawing.Color.Green
+        Me.R_Parcial.Location = New System.Drawing.Point(36, 148)
+        Me.R_Parcial.Name = "R_Parcial"
+        Me.R_Parcial.Size = New System.Drawing.Size(117, 20)
+        Me.R_Parcial.TabIndex = 24
+        Me.R_Parcial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btn_ope4
         '
@@ -514,7 +515,7 @@ Partial Class Form1
     Friend WithEvents Button4 As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Resultado1 As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents R_Parcial As TextBox
 End Class
