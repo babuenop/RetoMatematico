@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.T_Sol1 = New System.Windows.Forms.TextBox()
         Me.T_Sol2 = New System.Windows.Forms.TextBox()
         Me.T_Sol3 = New System.Windows.Forms.TextBox()
@@ -52,10 +53,13 @@ Partial Class Form1
         Me.txt_num3 = New System.Windows.Forms.TextBox()
         Me.txt_num5 = New System.Windows.Forms.TextBox()
         Me.btn_Iniciar = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.Borrar = New System.Windows.Forms.Button()
+        Me.Resolver = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Timer = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -149,7 +153,7 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.T_Sol4)
         Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Honeydew
-        Me.GroupBox1.Location = New System.Drawing.Point(28, 263)
+        Me.GroupBox1.Location = New System.Drawing.Point(27, 286)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(365, 102)
         Me.GroupBox1.TabIndex = 8
@@ -341,6 +345,7 @@ Partial Class Form1
         'txt_num7
         '
         Me.txt_num7.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_num7.Enabled = False
         Me.txt_num7.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_num7.ForeColor = System.Drawing.Color.Green
         Me.txt_num7.Location = New System.Drawing.Point(282, 28)
@@ -352,6 +357,7 @@ Partial Class Form1
         'txt_num2
         '
         Me.txt_num2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_num2.Enabled = False
         Me.txt_num2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_num2.ForeColor = System.Drawing.Color.Green
         Me.txt_num2.Location = New System.Drawing.Point(77, 28)
@@ -363,6 +369,7 @@ Partial Class Form1
         'txt_num1
         '
         Me.txt_num1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_num1.Enabled = False
         Me.txt_num1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_num1.ForeColor = System.Drawing.Color.Green
         Me.txt_num1.Location = New System.Drawing.Point(36, 28)
@@ -374,6 +381,7 @@ Partial Class Form1
         'txt_num4
         '
         Me.txt_num4.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_num4.Enabled = False
         Me.txt_num4.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_num4.ForeColor = System.Drawing.Color.Green
         Me.txt_num4.Location = New System.Drawing.Point(159, 28)
@@ -385,6 +393,7 @@ Partial Class Form1
         'txt_num6
         '
         Me.txt_num6.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_num6.Enabled = False
         Me.txt_num6.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_num6.ForeColor = System.Drawing.Color.Green
         Me.txt_num6.Location = New System.Drawing.Point(241, 28)
@@ -396,6 +405,7 @@ Partial Class Form1
         'txt_num3
         '
         Me.txt_num3.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_num3.Enabled = False
         Me.txt_num3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_num3.ForeColor = System.Drawing.Color.Green
         Me.txt_num3.Location = New System.Drawing.Point(118, 28)
@@ -407,6 +417,7 @@ Partial Class Form1
         'txt_num5
         '
         Me.txt_num5.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_num5.Enabled = False
         Me.txt_num5.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_num5.ForeColor = System.Drawing.Color.Green
         Me.txt_num5.Location = New System.Drawing.Point(200, 28)
@@ -424,43 +435,70 @@ Partial Class Form1
         Me.btn_Iniciar.Text = "Iniciar"
         Me.btn_Iniciar.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnLimpiar
         '
-        Me.Button2.Location = New System.Drawing.Point(101, 8)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 11
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnLimpiar.Location = New System.Drawing.Point(101, 8)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(75, 23)
+        Me.btnLimpiar.TabIndex = 11
+        Me.btnLimpiar.Text = "Limpiar"
+        Me.btnLimpiar.UseVisualStyleBackColor = True
         '
-        'Button3
+        'Borrar
         '
-        Me.Button3.Location = New System.Drawing.Point(183, 8)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 12
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.Borrar.Location = New System.Drawing.Point(183, 8)
+        Me.Borrar.Name = "Borrar"
+        Me.Borrar.Size = New System.Drawing.Size(75, 23)
+        Me.Borrar.TabIndex = 12
+        Me.Borrar.Text = "Borrar"
+        Me.Borrar.UseVisualStyleBackColor = True
         '
-        'Button4
+        'Resolver
         '
-        Me.Button4.Location = New System.Drawing.Point(266, 8)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 13
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.Resolver.Location = New System.Drawing.Point(266, 8)
+        Me.Resolver.Name = "Resolver"
+        Me.Resolver.Size = New System.Drawing.Size(75, 23)
+        Me.Resolver.TabIndex = 13
+        Me.Resolver.Text = "Resolver"
+        Me.Resolver.UseVisualStyleBackColor = True
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.Button2)
-        Me.Panel1.Controls.Add(Me.Button4)
+        Me.Panel1.Controls.Add(Me.btnLimpiar)
+        Me.Panel1.Controls.Add(Me.Resolver)
         Me.Panel1.Controls.Add(Me.btn_Iniciar)
-        Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Location = New System.Drawing.Point(28, 219)
+        Me.Panel1.Controls.Add(Me.Borrar)
+        Me.Panel1.Location = New System.Drawing.Point(26, 231)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(366, 38)
         Me.Panel1.TabIndex = 14
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Honeydew
+        Me.Label3.Location = New System.Drawing.Point(58, 197)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(73, 19)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "Contador"
+        '
+        'Timer
+        '
+        Me.Timer.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.Timer.Enabled = False
+        Me.Timer.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Timer.ForeColor = System.Drawing.Color.Green
+        Me.Timer.Location = New System.Drawing.Point(144, 197)
+        Me.Timer.Name = "Timer"
+        Me.Timer.Size = New System.Drawing.Size(117, 20)
+        Me.Timer.TabIndex = 25
+        Me.Timer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Form1
         '
@@ -468,6 +506,8 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.SeaGreen
         Me.ClientSize = New System.Drawing.Size(421, 422)
+        Me.Controls.Add(Me.Timer)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -481,6 +521,7 @@ Partial Class Form1
         Me.GroupBox2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -510,12 +551,15 @@ Partial Class Form1
     Friend WithEvents btn_num3 As Button
     Friend WithEvents btn_num2 As Button
     Friend WithEvents btn_Iniciar As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents Borrar As Button
+    Friend WithEvents Resolver As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Resultado1 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents R_Parcial As TextBox
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Timer As TextBox
 End Class

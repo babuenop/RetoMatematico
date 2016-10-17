@@ -4,7 +4,8 @@
     Dim vBtnNum(4) As Button
     Dim vBtnOpe(4) As Button
     Dim Calcular As Calcular = New Calcular()
-
+    Dim Contador As Integer
+    Dim btnSel As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         vSol(0) = T_Sol1
         vSol(1) = T_Sol2
@@ -25,12 +26,28 @@
         vBtnNum = New Button() {btn_num1, btn_num2, btn_num3, btn_num4}
         vBtnOpe = New Button() {btn_ope1, btn_ope2, btn_ope3, btn_ope4}
 
+        For i = 0 To 3
+            vBtnNum(i).Enabled = False
+            vBtnOpe(i).Enabled = False
+        Next
+
+        R_Parcial.Enabled = False
+        Resultado1.Enabled = False
+        GroupBox1.Visible = False
+
     End Sub
 
     Private Sub btn_Iniciar_Click(sender As Object, e As EventArgs) Handles btn_Iniciar.Click
+        Limpiar()
+        GroupBox1.Visible = False
         GenerarNumeros()
         Operacion()
+        Contador = 60
+        Timer.Text = Contador
+        Timer.Enabled = True
+
     End Sub
+
     'Genera Numeros para Botones y Operadores
     Private Sub GenerarNumeros()
         Dim i As Integer
@@ -126,7 +143,27 @@
             vBtnNum(i).Tag = "0"
         Next
     End Sub
+    'Limpia todos los objetos del formulario 
+    Public Sub Limpiar()
+        txt_num1.Clear()
+        txt_num2.Clear()
+        txt_num3.Clear()
+        txt_num4.Clear()
+        txt_num5.Clear()
+        txt_num6.Clear()
+        txt_num7.Clear()
+        txt_Indice.Text = 0
+        Borrar.Enabled = False
 
+
+        R_Parcial.Clear()
+        btn_num1.Tag = ("0")
+        btn_num2.Tag = ("0")
+        btn_num3.Tag = ("0")
+        btn_num4.Tag = ("0")
+        Habilitar()
+
+    End Sub
     'Carga el valor del numero seleccionado 
     Private Sub CargarNumero(ByVal n As Integer)
         vNum(txt_Indice.Text).Text = vBtnNum(n).Text
@@ -178,6 +215,7 @@
         Deshabilitar()
         HabilitarOper()
         btn_num1.Tag = ("1")
+        btnSel = 1
     End Sub
 
     Private Sub btn_num2_Click(sender As Object, e As EventArgs) Handles btn_num2.Click
@@ -185,6 +223,7 @@
         Deshabilitar()
         HabilitarOper()
         btn_num2.Tag = ("1")
+        btnSel = 2
     End Sub
 
     Private Sub btn_num3_Click(sender As Object, e As EventArgs) Handles btn_num3.Click
@@ -192,6 +231,7 @@
         Deshabilitar()
         HabilitarOper()
         btn_num3.Tag = ("1")
+        btnSel = 3
     End Sub
 
     Private Sub btn_num4_Click(sender As Object, e As EventArgs) Handles btn_num4.Click
@@ -199,6 +239,7 @@
         Deshabilitar()
         HabilitarOper()
         btn_num4.Tag = ("1")
+        btnSel = 4
     End Sub
 
     'Eventos de seleccion de operadores
@@ -222,25 +263,97 @@
         Habilitar()
     End Sub
 
-    Private Sub txt_num3_TextChanged(sender As Object, e As EventArgs) Handles txt_num3.TextChanged
-        Dim resp As Integer
-        resp = Calcular.Verifica(txt_num1.Text, txt_num2.Text, txt_num3.Text)
-        R_Parcial.Text = resp
+    Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        Limpiar()
     End Sub
 
-    Private Sub txt_num5_TextChanged(sender As Object, e As EventArgs) Handles txt_num5.TextChanged
-        Dim resp As Integer
-        resp = Calcular.Verifica(R_Parcial.Text, txt_num4.Text, txt_num5.Text)
-        R_Parcial.Text = resp
+    Private Sub txt_Indice_TextChanged(sender As Object, e As EventArgs) Handles txt_Indice.TextChanged
+        Dim indice As Integer
+        indice = txt_Indice.Text
+        Select Case indice
+            Case 0
+                Limpiar()
+
+            Case 1
+                Borrar.Enabled = True
+                R_Parcial.Text = txt_num1.Text
+                HabilitarOper()
+                Deshabilitar()
+                txt_num2.Clear()
+            Case 2
+                Habilitar()
+                DeshabilitarOper()
+                txt_num3.Clear()
+            Case 3
+                HabilitarOper()
+                Deshabilitar()
+                Dim resp As Integer
+                resp = Calcular.Verifica(txt_num1.Text, txt_num2.Text, txt_num3.Text)
+                R_Parcial.Text = resp
+                txt_num4.Clear()
+            Case 4
+                Habilitar()
+                DeshabilitarOper()
+                txt_num5.Clear()
+            Case 5
+                HabilitarOper()
+                Deshabilitar()
+                Dim resp As Integer
+                resp = Calcular.Verifica(R_Parcial.Text, txt_num4.Text, txt_num5.Text)
+                R_Parcial.Text = resp
+                txt_num6.Clear()
+            Case 6
+                Habilitar()
+                DeshabilitarOper()
+                txt_num7.Clear()
+            Case 7
+                DeshabilitarOper()
+                Deshabilitar()
+                Dim resp As Integer
+                resp = Calcular.Verifica(R_Parcial.Text, txt_num6.Text, txt_num7.Text)
+                R_Parcial.Text = resp
+            Case Else
+                Return
+        End Select
+    End Sub
+    'Evento boton borrar
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Borrar.Click
+        Select Case btnSel
+            Case 1
+                btn_num1.Tag = ("0")
+            Case 2
+                btn_num2.Tag = ("0")
+            Case 3
+                btn_num3.Tag = ("0")
+            Case 4
+                btn_num4.Tag = ("0")
+
+        End Select
+
+
+        If txt_Indice.Text > 0 Then
+            Borrar.Enabled = True
+            txt_Indice.Text = txt_Indice.Text - 1
+        End If
+
     End Sub
 
-    Private Sub txt_num7_TextChanged(sender As Object, e As EventArgs) Handles txt_num7.TextChanged
-        Dim resp As Integer
-        resp = Calcular.Verifica(R_Parcial.Text, txt_num6.Text, txt_num7.Text)
-        R_Parcial.Text = resp
+    Private Sub Resolver_Click(sender As Object, e As EventArgs) Handles Resolver.Click
+        GroupBox1.Visible = True
     End Sub
 
-    Private Sub txt_num1_TextChanged(sender As Object, e As EventArgs) Handles txt_num1.TextChanged
-        R_Parcial.Text = txt_num1.Text
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Contador = Contador - 1
+        Timer.Text = Contador
+        If Contador = 0 Then
+            Timer.Enabled = False
+            MsgBox("Terminó el Tiempo! Perdiste!")
+
+            MsgBox("Inténtalo de Nuevo")
+        End If
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
     End Sub
 End Class
